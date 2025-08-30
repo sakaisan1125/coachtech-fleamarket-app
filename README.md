@@ -3,8 +3,8 @@
 ## 環境構築
 
 ### Dockerビルド
-1. `git clone git@github.com:sakaisan1125/coachtech-fleamarket-app.git demo-case`
-2. `cd demo-case`
+1. `git clone git@github.com:sakaisan1125/coachtech-fleamarket-app.git`
+2. `cd coachtech-fleamarket-app`
 3. `docker-compose up -d --build`
 
 ※MySQLはOSや環境によって起動しない場合があるので、必要に応じて `docker-compose.yml` を調整してください。
