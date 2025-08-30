@@ -1,0 +1,613 @@
+.mypage-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.profile-area {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 32px;
+    margin-top: 24px;
+    gap: 32px;
+    /* ✅ カード風スタイルを削除 */
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+.profile-icon {
+    width: 120px;
+    height: 120px;
+    background: #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    /* ✅ 影・ボーダーを削除 */
+    border: none;
+    box-shadow: none;
+    margin-left: 150px;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-username {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 16px;
+}
+
+.profile-edit-btn {
+    display: inline-block;
+    border: 2px solid #ff5c5c;
+    color: #ff5c5c;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: auto;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    /* ✅ 影効果を削除 */
+    box-shadow: none;
+}
+
+.profile-edit-btn:hover {
+    background: #ff5c5c;
+    color: #fff;
+    /* ✅ ホバー時の移動・影効果を削除 */
+    transform: none;
+    box-shadow: none;
+}
+
+.mypage-tab-menu {
+    display: flex;
+    gap: 32px;
+    border-bottom: 2px solid #bbb;
+    margin-bottom: 8px;
+    margin-left: 40px;
+}
+
+.mypage-tab {
+    font-weight: bold;
+    color: #888;
+    padding-bottom: 8px;
+    border-bottom: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 17px;
+    transition: color 0.2s;
+}
+
+.mypage-tab.active {
+    color: #ff2424;
+    border-bottom: none;
+    font-weight: bold;
+}
+
+/* ✅ アイテムリストを中央寄せで平面的に */
+.item-list {
+    display: flex;
+    gap: 48px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    padding-left: 40px;
+    /* ✅ 中央寄せを追加 */
+    justify-content: flex-start;
+}
+
+.item-card {
+    width: 240px;
+    text-align: left;
+    /* ✅ カード風スタイルを削除 */
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+.item-card:hover {
+    /* ✅ ホバー効果を削除 */
+    transform: none;
+    box-shadow: none;
+}
+
+.item-image-placeholder {
+    width: 240px;
+    height: 240px;
+    background: #e3e3e3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #222;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.item-image-text {
+    color: #222;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.item-name {
+    font-size: 15px;
+    color: #222;
+    margin-left: 0;
+    margin-top: 0;
+    font-weight: normal;
+    letter-spacing: 1px;
+    padding: 0;
+    min-height: auto;
+}
+
+.item-card a {
+    text-decoration: none;
+}
+
+.sold-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #ff2424;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+.no-items {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin: 60px 0;
+    padding: 40px;
+    /* ✅ カード風スタイルを削除 */
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ✅ PC対応: カード風スタイルを削除 */
+@media (min-width: 1400px) {
+    .mypage-container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 30px;
+    }
+
+    .profile-area {
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+        margin-bottom: 40px;
+        margin-top: 30px;
+        gap: 40px;
+        box-shadow: none;
+    }
+
+    .profile-area:hover {
+        box-shadow: none;
+    }
+
+    .profile-icon {
+        width: 140px;
+        height: 140px;
+        border: none;
+        box-shadow: none;
+        transition: none;
+        margin-left: 150px;
+    }
+
+    .profile-icon:hover {
+        transform: none;
+    }
+
+    .profile-username {
+        font-size: 2.5rem;
+        margin-left: 0;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .profile-edit-btn {
+        padding: 12px 32px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        border-width: 3px;
+        transition: all 0.3s;
+        box-shadow: none;
+    }
+
+    .profile-edit-btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .mypage-tab-menu {
+        gap: 40px;
+        margin-left: 50px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+    }
+
+    .mypage-tab {
+        font-size: 20px;
+        padding-bottom: 12px;
+        transition: all 0.3s;
+        position: relative;
+    }
+
+    .mypage-tab:hover {
+        color: #ff4444;
+        transform: none;
+    }
+
+    .mypage-tab.active {
+        color: #ff2424;
+    }
+
+    .mypage-tab.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: #ff2424;
+        border-radius: 2px;
+    }
+
+    .item-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        margin-top: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+        justify-items: center;
+    }
+
+    .item-card {
+        width: 280px;
+        transition: none;
+        border-radius: 0;
+        overflow: visible;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .item-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .item-image-placeholder {
+        width: 280px;
+        height: 280px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        font-size: 32px;
+    }
+
+    .item-image-text {
+        font-size: 28px;
+    }
+
+    .item-name {
+        font-size: 18px;
+        padding: 0;
+        margin-top: 5px;
+        line-height: 1.4;
+        min-height: auto;
+        display: block;
+    }
+
+    .sold-badge {
+        top: 15px;
+        left: 15px;
+        font-size: 18px;
+        padding: 6px 16px;
+        border-radius: 8px;
+    }
+
+    .no-items {
+        font-size: 18px;
+        margin: 80px 0;
+        padding: 50px;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+@media (min-width: 1540px) {
+    .mypage-container {
+        max-width: 1400px;
+        margin: 60px auto;
+        padding: 0 40px;
+    }
+
+    .profile-area {
+        padding: 0;
+        margin-bottom: 50px;
+        gap: 50px;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .profile-icon {
+        width: 160px;
+        height: 160px;
+        border: none;
+        box-shadow: none;
+        margin-left: 200px;
+    }
+
+    .profile-username {
+        font-size: 3rem;
+    }
+
+    .profile-edit-btn {
+        padding: 15px 40px;
+        font-size: 1.3rem;
+        border-radius: 12px;
+        box-shadow: none;
+    }
+
+    .mypage-tab-menu {
+        gap: 50px;
+        margin-left: 60px;
+        padding-bottom: 15px;
+    }
+
+    .mypage-tab {
+        font-size: 22px;
+        padding-bottom: 15px;
+    }
+
+    .item-list {
+        gap: 50px;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 60px;
+        padding-left: 60px;
+        padding-right: 60px;
+        display: grid;
+        grid-template-rows: auto;
+        justify-content: flex-start;
+    }
+
+    .item-card {
+        width: 320px;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .item-image-placeholder {
+        width: 320px;
+        height: 320px;
+        font-size: 36px;
+    }
+
+    .item-image-text {
+        font-size: 32px;
+    }
+
+    .item-name {
+        font-size: 20px;
+        padding: 0;
+        min-height: auto;
+    }
+
+    .sold-badge {
+        font-size: 20px;
+        padding: 8px 20px;
+    }
+}
+
+/* ✅ タブレット・モバイル対応も平面的に */
+@media (min-width: 768px) and (max-width: 1399px) {
+    .mypage-container {
+        margin: 30px auto;
+        padding: 0 25px;
+    }
+
+    .profile-area {
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+        margin-bottom: 30px;
+        box-shadow: none;
+    }
+
+    .profile-icon {
+        width: 100px;
+        height: 100px;
+        border: none;
+        box-shadow: none;
+        margin-left: 100px;
+    }
+
+    .profile-username {
+        font-size: 1.8rem;
+        margin-left: 0;
+    }
+
+    .profile-edit-btn {
+        padding: 8px 20px;
+        font-size: 1rem;
+        box-shadow: none;
+    }
+
+    .mypage-tab-menu {
+        gap: 25px;
+        margin-left: 30px;
+    }
+
+    .mypage-tab {
+        font-size: 18px;
+    }
+
+    .item-list {
+        display: flex;
+        gap: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .item-card {
+        width: 220px;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .item-image-placeholder {
+        width: 220px;
+        height: 220px;
+        border-radius: 8px;
+    }
+
+    .item-name {
+        font-size: 16px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .mypage-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .profile-area {
+        flex-direction: column;
+        text-align: center;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+        margin-bottom: 25px;
+        gap: 20px;
+        box-shadow: none;
+    }
+
+    .profile-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        border: none;
+        box-shadow: none;
+    }
+
+    .profile-info {
+        text-align: center;
+    }
+
+    .profile-username {
+        font-size: 1.5rem;
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+
+    .profile-edit-btn {
+        margin-left: 0;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        box-shadow: none;
+    }
+
+    .mypage-tab-menu {
+        gap: 20px;
+        margin-left: 20px;
+        border-bottom: 1px solid #bbb;
+    }
+
+    .mypage-tab {
+        font-size: 15px;
+        padding-bottom: 6px;
+    }
+
+    .item-list {
+        display: flex;
+        gap: 20px;
+        margin-top: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .item-card {
+        width: 150px;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .item-image-placeholder {
+        width: 150px;
+        height: 150px;
+        font-size: 20px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+    }
+
+    .item-image-text {
+        font-size: 16px;
+    }
+
+    .item-name {
+        font-size: 13px;
+        padding: 0;
+        min-height: auto;
+        line-height: 1.3;
+    }
+
+    .sold-badge {
+        top: 8px;
+        left: 8px;
+        font-size: 12px;
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+
+    .no-items {
+        font-size: 14px;
+        margin: 40px 0;
+        padding: 20px;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
