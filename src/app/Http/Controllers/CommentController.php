@@ -8,10 +8,11 @@ use App\Models\Item;
 
 class CommentController extends Controller
 {
-    public function store(CommentRequest $request, Item $item) 
+    /**
+     * コメント投稿処理
+     */
+    public function store(CommentRequest $request, Item $item)
     {
-        // ✅ バリデーションは自動実行される
-        
         Comment::create([
             'user_id' => auth()->id(),
             'item_id' => $item->id,
