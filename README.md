@@ -3,7 +3,7 @@
 ## 環境構築
 
 ### Dockerビルド
-1. `git clone <YOUR_REPO_URL> demo-case`
+1. `git clone git@github.com:sakaisan1125/coachtech-fleamarket-app.git demo-case`
 2. `cd demo-case`
 3. `docker-compose up -d --build`
 
