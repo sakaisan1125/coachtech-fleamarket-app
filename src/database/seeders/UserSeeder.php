@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         'id' => 1,    
         'name' => 'テストユーザー',
         'email' => 'test@example.com',
-        'password' => Hash::make('password'), // ログイン可能
+        'password' => Hash::make('password'),
         ]);
     }
 }

@@ -13,22 +13,19 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-    Schema::create('items', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        //constrained() により、users テーブルの id を参照します。
-        //onDelete('cascade') により、ユーザーが削除されたときにそのユーザーの商品も自動で削除されます（カスケード削除）。
-        $table->string('name');
-        $table->text('description');
-        $table->string('brand')->nullable();
-        $table->integer('price');
-        $table->string('condition');
-        $table->string('image_path');
-        $table->boolean('is_sold')->default(false);
-        $table->timestamps();
-    });
+        Schema::create('items', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->text('description');
+            $table->string('brand')->nullable();
+            $table->integer('price');
+            $table->string('condition');
+            $table->string('image_path');
+            $table->boolean('is_sold')->default(false);
+            $table->timestamps();
+        });
     }
-
 
     /**
      * Reverse the migrations.

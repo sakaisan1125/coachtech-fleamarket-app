@@ -71,7 +71,6 @@
     font-size: 14px;
     text-decoration: none;
     margin-left: 8px;
-    /* 必要に応じて調整 */
 }
 
 .address-info {
@@ -97,7 +96,6 @@ hr {
 .purchase-summary {
     width: 340px;
     background: #fff;
-    /* border: 2px solid #bbb; */
     border-radius: 8px;
     padding: 32px 24px 24px 24px;
     box-sizing: border-box;
@@ -177,8 +175,6 @@ hr {
     margin-bottom: 10px;
 }
 
-
-
 .alert-danger {
     color: #721c24;
     background-color: #f8d7da;
@@ -194,7 +190,6 @@ hr {
 .alert li {
     margin-bottom: 5px;
 }
-
 
 @media (min-width: 1400px) and (max-width: 1540px) {
     .purchase-container {
@@ -225,7 +220,6 @@ hr {
     }
 }
 
-/* 1540px以上の大画面対応 */
 @media (min-width: 1540px) {
     .purchase-container {
         max-width: 1400px;
@@ -255,7 +249,6 @@ hr {
     }
 }
 
-/* モバイル対応 */
 @media (max-width: 767px) {
     .purchase-container {
         flex-direction: column;

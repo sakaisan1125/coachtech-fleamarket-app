@@ -20,10 +20,10 @@ class Purchase extends Model
     }
 
     protected $fillable = [
-        'user_id',        // 購入者ID
-        'item_id',        // 商品ID  
-        'address',        // 配送先住所
-        'payment_method'  // 支払い方法
+        'user_id',
+        'item_id',
+        'address',
+        'payment_method'
     ];
 
 }

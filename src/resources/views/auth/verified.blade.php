@@ -3,7 +3,6 @@
 @section('content')
 <div class="register-wrap">
     <div style="text-align: center; margin-top: 80px;">
-        {{-- メッセージ部分 --}}
         <div style="margin-bottom: 60px;">
             @if(Auth::user()->hasVerifiedEmail())
                 <p style="font-size: 20px; color: #28a745; font-weight: bold;">
@@ -26,14 +25,14 @@
                     商品一覧へ
                 </a>
             @else
-                <p style="font-size: 18px; margin-bottom: 5px; color: #000000ff; font-weight: 500;">
+                <p style="font-size: 18px; margin-bottom: 5px; color: #000; font-weight: 500;">
                     認証メール内のリンクをクリックすると認証が完了します。<br>
                     認証後はこの画面を更新してください。
                 </p>
                 <button onclick="location.reload();" style="
                     display: inline-block;
                     background-color: #d6d6d6;
-                    color: #000000ff;
+                    color: #000;
                     padding: 15px 30px;
                     border-radius: 6px;
                     text-decoration: none;
@@ -48,7 +47,6 @@
             @endif
         </div>
 
-        {{-- 成功・エラーメッセージ --}}
         @if (session('message'))
             <div style="color: #28a745; font-weight: bold; margin-bottom: 30px; font-size: 16px;">
                 {{ session('message') }}
@@ -62,7 +60,6 @@
         @endif
 
         @if(!Auth::user()->hasVerifiedEmail())
-            {{-- 認証メール再送リンク --}}
             <div style="margin-bottom: 40px;">
                 <form method="POST" action="{{ route('verification.send') }}" style="display: inline;">
                     @csrf
@@ -81,7 +78,6 @@
             </div>
         @endif
 
-        {{-- ログアウトリンク --}}
         <div>
             <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                 @csrf

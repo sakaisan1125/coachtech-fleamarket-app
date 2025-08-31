@@ -11,7 +11,6 @@
     margin-bottom: 32px;
     margin-top: 24px;
     gap: 32px;
-    /* ✅ カード風スタイルを削除 */
     background: transparent;
     border-radius: 0;
     padding: 0;
@@ -26,7 +25,6 @@
     display: inline-block;
     position: relative;
     overflow: hidden;
-    /* ✅ 影・ボーダーを削除 */
     border: none;
     box-shadow: none;
     margin-left: 150px;
@@ -62,14 +60,12 @@
     margin-left: auto;
     text-decoration: none;
     transition: background 0.2s, color 0.2s;
-    /* ✅ 影効果を削除 */
     box-shadow: none;
 }
 
 .profile-edit-btn:hover {
     background: #ff5c5c;
     color: #fff;
-    /* ✅ ホバー時の移動・影効果を削除 */
     transform: none;
     box-shadow: none;
 }
@@ -99,21 +95,18 @@
     font-weight: bold;
 }
 
-/* ✅ アイテムリストを中央寄せで平面的に */
 .item-list {
     display: flex;
     gap: 48px;
     margin-top: 40px;
     flex-wrap: wrap;
     padding-left: 40px;
-    /* ✅ 中央寄せを追加 */
     justify-content: flex-start;
 }
 
 .item-card {
     width: 240px;
     text-align: left;
-    /* ✅ カード風スタイルを削除 */
     background: transparent;
     border-radius: 0;
     box-shadow: none;
@@ -121,7 +114,6 @@
 }
 
 .item-card:hover {
-    /* ✅ ホバー効果を削除 */
     transform: none;
     box-shadow: none;
 }
@@ -189,13 +181,11 @@
     font-size: 16px;
     margin: 60px 0;
     padding: 40px;
-    /* ✅ カード風スタイルを削除 */
     background: transparent;
     border-radius: 0;
     box-shadow: none;
 }
 
-/* ✅ PC対応: カード風スタイルを削除 */
 @media (min-width: 1400px) {
     .mypage-container {
         max-width: 1200px;
@@ -434,7 +424,6 @@
     }
 }
 
-/* ✅ タブレット・モバイル対応も平面的に */
 @media (min-width: 768px) and (max-width: 1399px) {
     .mypage-container {
         margin: 30px auto;

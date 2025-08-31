@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   @yield('css')
-
 </head>
 <body>
 
@@ -18,20 +17,15 @@
         </a>
       </div>
       <div class="header__center">
-        {{-- ✅ 修正：検索フォーム --}}
         <form action="{{ route('items.index') }}" method="GET" class="search-form">
           <input type="text" 
                  name="keyword" 
                  value="{{ request('keyword') }}" 
                  placeholder="なにをお探しですか？"
                  class="search-input">
-          
-          {{-- ✅ 現在のタブ状態を保持 --}}
           @if(request('tab'))
             <input type="hidden" name="tab" value="{{ request('tab') }}">
           @endif
-          
-          <!-- <button type="submit" class="search-btn">🔍</button> -->
         </form>
       </div>
       <div class="header__right">

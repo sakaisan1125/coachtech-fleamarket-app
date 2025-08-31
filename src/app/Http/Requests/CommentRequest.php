@@ -6,17 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CommentRequest extends FormRequest
 {
-    /**
-     * ユーザーがこのリクエストを実行する権限があるかを判定
-     */
     public function authorize()
     {
-        return auth()->check(); // ログインユーザーのみ許可
+        return auth()->check();
     }
 
-    /**
-     * バリデーションルールを定義
-     */
     public function rules()
     {
         return [
@@ -24,9 +18,6 @@ class CommentRequest extends FormRequest
         ];
     }
 
-    /**
-     * カスタムエラーメッセージ
-     */
     public function messages()
     {
         return [

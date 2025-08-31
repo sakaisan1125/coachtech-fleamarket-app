@@ -1,4 +1,3 @@
-/* item詳細ページ全体のレイアウト */
 .item-detail-container {
     display: flex;
     gap: 48px;
@@ -33,7 +32,6 @@
     margin-bottom: 16px;
 }
 
-/* ボタンスタイル */
 .buy-btn,
 .comment-btn {
     display: block;
@@ -96,7 +94,6 @@ a.buy-btn:hover {
     background: #c00;
 }
 
-/* セクションスタイル */
 .section-title {
     font-weight: bold;
     font-size: 18px;
@@ -107,7 +104,6 @@ a.buy-btn:hover {
     padding: 5px 0;
 }
 
-/* カテゴリー表示を折り返す */
 .item-section .category-list {
     display: flex;
     flex-wrap: wrap;
@@ -124,7 +120,6 @@ a.buy-btn:hover {
     margin-bottom: 16px;
 }
 
-/* カテゴリー・コンディション */
 .category-badge {
     background-color: #c2c2c2;
     color: #000000;
@@ -147,7 +142,6 @@ a.buy-btn:hover {
     font-weight: bold;
 }
 
-/* いいね・コメントエリア */
 .like-comment-area {
     display: flex;
     align-items: center;
@@ -196,7 +190,6 @@ a.buy-btn:hover {
     line-height: 1;
 }
 
-/* コメント関連 */
 .avatar {
     width: 20px;
     height: 20px;
@@ -233,7 +226,6 @@ a.buy-btn:hover {
     padding: 10px;
 }
 
-/* エラーメッセージのスタイル */
 .alert {
     padding: 12px;
     margin-bottom: 16px;
@@ -261,13 +253,11 @@ a.buy-btn:hover {
     background-color: #fdf2f2;
 }
 
-/* プレースホルダーのスタイル */
 .comment-textarea::placeholder {
     color: #999;
     font-style: italic;
 }
 
-/* レスポンシブ */
 @media (max-width: 800px) {
     .item-detail-container {
         flex-direction: column;
@@ -283,7 +273,6 @@ a.buy-btn:hover {
     }
 }
 
-/* 無効化されたボタンの基本スタイル */
 .buy-btn.disabled {
     background: #ccc !important;
     color: #666 !important;
@@ -323,7 +312,6 @@ a.buy-btn:hover {
     }
 }
 
-/* 1400px～1540pxのPC画面対応 */
 @media (min-width: 1400px) and (max-width: 1540px) {
     .item-detail-container {
         max-width: 1200px;
@@ -339,4 +327,4 @@ a.buy-btn:hover {
     .item-detail-info {
         min-width: 360px;
     }
-}     
+}

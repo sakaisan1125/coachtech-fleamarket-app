@@ -8,7 +8,7 @@ class ProfileRequest extends FormRequest
 {
     public function authorize()
     {
-        return true; // 必要なら認可処理
+        return true;
     }
 
     public function rules()

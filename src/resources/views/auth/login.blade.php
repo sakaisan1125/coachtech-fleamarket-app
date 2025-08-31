@@ -17,13 +17,17 @@
     <div class="register-group">
       <label for="email">メールアドレス</label>
       <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus>
-      @error('email') <div class="form-error">{{ $message }}</div> @enderror
+      @error('email')
+        <div class="form-error">{{ $message }}</div>
+      @enderror
     </div>
 
     <div class="register-group">
       <label for="password">パスワード</label>
       <input id="password" type="password" name="password" autocomplete="current-password">
-      @error('password') <div class="form-error">{{ $message }}</div> @enderror
+      @error('password')
+        <div class="form-error">{{ $message }}</div>
+      @enderror
     </div>
 
     <button type="submit" class="register-btn">ログインする</button>

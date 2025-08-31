@@ -12,8 +12,6 @@
 @endif
 <form action="/purchase/{{ $item->id }}" method="POST">
   @csrf
-  
-  {{-- 追加：住所データを送信するためのhiddenフィールド --}}
   <input type="hidden" name="address" value="{{ $user->address }}">
   
   <div class="purchase-container">
@@ -21,7 +19,6 @@
         <div class="item-header">    
             <div class="item-image-placeholder">
                 @if ($item->image_url)
-                    {{-- ✅ 修正：アクセサーを使用 --}}
                     <img src="{{ $item->image_url }}" alt="商品画像" class="item-image">
                 @else
                     <span class="item-image-text">商品画像</span>
@@ -34,7 +31,6 @@
         </div>
       <hr>
       
-      {{-- 🔧 追加：バリデーションエラー表示 --}}
       @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -49,7 +45,6 @@
         <label>支払い方法</label>
         <select name="payment_method" id="payment_method" class="payment-select">
           <option value="" hidden disabled selected>選択してください</option>
-          <!-- <option value="convenience">コンビニ支払い</option> -->
           <option value="konbini">コンビニ支払い</option>
           <option value="card">カード支払い</option>
         </select>
@@ -86,7 +81,6 @@
   </div>
 </form>
 
-{{-- 🔧 追加：支払い方法の動的表示 --}}
 <script>
 document.getElementById('payment_method').addEventListener('change', function() {
     const summaryElement = document.getElementById('summary-payment-method');

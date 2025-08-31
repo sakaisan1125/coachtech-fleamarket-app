@@ -20,7 +20,7 @@ class ItemFactory extends Factory
             'brand'       => $this->faker->optional()->word,
             'price'       => $this->faker->numberBetween(100, 10000),
             'condition'   => $this->faker->randomElement(['新品', '未使用', '美品', '傷や汚れあり']),
-            'image_path'  => 'dummy.jpg', // 必要ならダミー画像パス
+            'image_path'  => 'dummy.jpg',
             'is_sold'     => false,
         ];
     }

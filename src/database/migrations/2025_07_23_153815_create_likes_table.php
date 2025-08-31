@@ -16,8 +16,6 @@ class CreateLikesTable extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->constrained()->onDelete('cascade');
-            //constrained()：items テーブルの id を参照する外部キー制約を自動で追加します。
-            //likes.item_id → items.id というリレーションが張られます。
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

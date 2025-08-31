@@ -25,10 +25,6 @@ class PurchaseController extends Controller
         ]);
     }
 
-    /**
-     * 本番：Stripe Checkoutへ遷移（カード/コンビニ）
-     * テスト：即時ダミー保存
-     */
     public function store(PurchaseRequest $request, $item_id)
     {
         $validated = $request->validated();
@@ -42,14 +38,13 @@ class PurchaseController extends Controller
             return redirect()->route('items.index')->with('error', '自分の出品は購入できません');
         }
 
-        // --- テスト環境はスキップして即保存（既存テスト通過用） ---
         if (app()->environment('testing')) {
             DB::transaction(function () use ($item, $user, $validated) {
                 Purchase::create([
                     'item_id'        => $item->id,
                     'user_id'        => $user->id,
                     'address'        => $validated['address'],
-                    'payment_method' => $validated['payment_method'], // 'card' or 'convenience'
+                    'payment_method' => $validated['payment_method'],
                 ]);
                 $item->is_sold = true;
                 $item->save();
@@ -57,10 +52,7 @@ class PurchaseController extends Controller
             return redirect()->route('items.index')->with('success', '購入が完了しました');
         }
 
-        // --- 本番：Stripe Checkout ---
         Stripe::setApiKey(config('services.stripe.secret'));
-
-        // success_url に session_id を埋め込ませる（これがWebhookなし確認の鍵）
         $successUrl = route('purchase.thanks', ['item' => $item->id]) . '?session_id={CHECKOUT_SESSION_ID}';
 
         $common = [
@@ -92,11 +84,11 @@ class PurchaseController extends Controller
             return redirect($session->url);
         }
 
-        if ($validated['payment_method'] === 'konbini') { // Konbini
+        if ($validated['payment_method'] === 'konbini') {
             $session = CheckoutSession::create([
                 'payment_method_types' => ['konbini'],
                 'payment_method_options' => [
-                    'konbini' => ['expires_after_days' => 3], // 任意
+                    'konbini' => ['expires_after_days' => 3],
                 ],
             ] + $common);
 
@@ -106,11 +98,6 @@ class PurchaseController extends Controller
         return back()->withErrors('未対応の支払い方法です。');
     }
 
-    /**
-     * サンクスページ
-     * - カード: session_id から支払い成功を即確認してDB確定
-     * - コンビニ: 未入金なので確定せず、確認ボタンを出す
-     */
     public function thanks(Request $request, $item_id)
     {
         if (app()->environment('testing')) {
@@ -128,7 +115,6 @@ class PurchaseController extends Controller
         $paymentMethod = ($session->metadata->payment_method ?? 'card');
 
         if ($paymentMethod === 'card') {
-            // カードは同期的に paid になるのでここで確定可能
             if (($session->payment_status ?? null) === 'paid') {
                 $this->finalizePurchaseFromMetadata($session->metadata);
                 return redirect()->route('items.index')->with('success', '決済が完了しました！');
@@ -137,9 +123,6 @@ class PurchaseController extends Controller
         }
 
         if ($paymentMethod === 'konbini') {
-            // コンビニはこの時点では未入金が普通。支払い番号発行済み。
-            // ここでは確定せず、「支払い済みを確認する」ボタンのページへ誘導する想定。
-            // 簡単のため、トップに案内だけ出して終了。
             return redirect()->route('items.index')->with(
                 'success',
                 '支払い番号の発行が完了しました。店頭支払い後、「支払い済みを確認」ボタンから反映できます。'
@@ -149,10 +132,6 @@ class PurchaseController extends Controller
         return redirect()->route('items.index');
     }
 
-    /**
-     * コンビニ払いの入金確認（ユーザー操作で照会するエンドポイント）
-     * - session_id を渡してもらい、StripeのPaymentIntentを取得し、succeeded ならDB確定
-     */
     public function confirmKonbini(Request $request)
     {
         $sessionId = $request->query('session_id');
@@ -163,13 +142,11 @@ class PurchaseController extends Controller
         Stripe::setApiKey(config('services.stripe.secret'));
         $session = CheckoutSession::retrieve($sessionId);
 
-        // Konbiniの支払いが完了すると、Checkout Sessionの payment_status が "paid" になる
         if (($session->payment_status ?? null) === 'paid') {
             $this->finalizePurchaseFromMetadata($session->metadata);
             return redirect()->route('items.index')->with('success', '入金を確認しました。購入が確定しました！');
         }
 
-        // 念のため PaymentIntent 側も確認（保険）
         if ($session->payment_intent) {
             $pi = PaymentIntent::retrieve($session->payment_intent);
             if (($pi->status ?? null) === 'succeeded') {
@@ -187,9 +164,6 @@ class PurchaseController extends Controller
             ->with('error', '決済がキャンセルされました');
     }
 
-    /**
-     * メタデータから購入確定（DB保存 & is_sold=true）
-     */
     private function finalizePurchaseFromMetadata($meta): void
     {
         $itemId = (int)($meta->item_id ?? 0);

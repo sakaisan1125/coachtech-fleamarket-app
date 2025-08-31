@@ -8,7 +8,7 @@ class ExhibitionRequest extends FormRequest
 {
     public function authorize()
     {
-        return auth()->check(); // 認証済みのみ許可
+        return auth()->check();
     }
 
     public function rules()
