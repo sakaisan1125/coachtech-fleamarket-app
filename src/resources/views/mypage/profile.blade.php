@@ -13,7 +13,6 @@
 
         <div class="profile-image-area">
             @if ($user->profile_image)
-                {{-- ✅ 修正：Storage::url()を使用 --}}
                 <img src="{{ Storage::url($user->profile_image) }}" class="profile-avatar" alt="プロフィール画像">
             @else
                 <span class="profile-avatar profile-avatar-default"></span>
