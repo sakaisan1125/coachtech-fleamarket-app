@@ -8,9 +8,6 @@ use App\Models\Item;
 
 class CommentController extends Controller
 {
-    /**
-     * コメント投稿処理
-     */
     public function store(CommentRequest $request, Item $item)
     {
         Comment::create([

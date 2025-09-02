@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-// use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -41,7 +40,6 @@ class LoginValidationTest extends TestCase
     /** @test */
     public function login_fails_with_invalid_credentials()
     {
-        // 存在しないユーザーでログインを試行
         $response = $this->post('/login', [
             'email' => 'nonexistent@example.com',
             'password' => 'wrongpassword',
@@ -78,15 +76,12 @@ class LoginValidationTest extends TestCase
             'password' => Hash::make('password123'),
         ]);
 
-        $this->actingAs($user); // ログイン状態にする
+        $this->actingAs($user);
 
-        // ログアウトリクエスト（POST）を送信
         $response = $this->post('/logout');
 
-        // リダイレクトされていることを確認（Laravel Fortify は / などへ）
         $response->assertRedirect('/');
 
-        // ログアウトされていることを確認
         $this->assertGuest();
     }
 }

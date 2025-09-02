@@ -50,6 +50,6 @@ services:
     image: mailhog/mailhog:latest
     container_name: demo-case-mailhog-1
     ports:
-      - "8025:8025"  # WebUI
-      - "1025:1025"  # SMTP
+      - "8025:8025"
+      - "1025:1025"
     restart: unless-stopped

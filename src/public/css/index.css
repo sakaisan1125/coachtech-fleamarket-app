@@ -117,7 +117,6 @@
     border: 1px solid #c3e6cb;
 }
 
-/* ✅ PC対応: 商品一覧レスポンシブ */
 @media (min-width: 1400px) {
     .container {
         max-width: 1200px;
@@ -200,7 +199,6 @@
         border-radius: 8px;
     }
 
-    /* 検索結果情報 */
     .search-result-info {
         padding: 15px 25px;
         margin-left: 50px;
@@ -286,7 +284,6 @@
     }
 }
 
-/* ✅ タブレット対応の改善 */
 @media (min-width: 768px) and (max-width: 1399px) {
     .container {
         margin: 30px auto;

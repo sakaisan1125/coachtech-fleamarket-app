@@ -8,9 +8,6 @@ use App\Http\Requests\AddressRequest;
 
 class AddressController extends Controller
 {
-    /**
-     * 住所編集画面の表示
-     */
     public function edit(Request $request)
     {
         $user = Auth::user();
@@ -22,9 +19,6 @@ class AddressController extends Controller
         return view('address.edit', compact('user'));
     }
 
-    /**
-     * 住所更新処理
-     */
     public function update(AddressRequest $request)
     {
         $user = Auth::user();

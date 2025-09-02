@@ -12,7 +12,6 @@ class CommentTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** ログイン済みのユーザーはコメントを送信できる */
     public function test_authenticated_user_can_post_comment()
     {
         $user = User::factory()->create();
@@ -31,7 +30,6 @@ class CommentTest extends TestCase
         ]);
     }
 
-    /** ログイン前のユーザーはコメントを送信できない */
     public function test_guest_cannot_post_comment()
     {
         $item = Item::factory()->create();
@@ -46,7 +44,6 @@ class CommentTest extends TestCase
         ]);
     }
 
-    /** コメントが255字以上の場合、バリデーションメッセージが表示される */
     public function test_comment_over_255_characters_shows_validation_error()
     {
         $user = User::factory()->create();
@@ -64,7 +61,6 @@ class CommentTest extends TestCase
         ]);
     }
 
-    /** コメントが入力されていない場合、バリデーションメッセージが表示される */
     public function test_empty_comment_shows_validation_error()
     {
         $user = User::factory()->create();

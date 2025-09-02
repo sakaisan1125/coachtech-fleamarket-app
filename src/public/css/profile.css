@@ -97,7 +97,6 @@
     white-space: nowrap;
 }
 
-/* PC対応: レスポンシブのみ（デザインは変更なし） */
 @media (min-width: 1400px) {
     .profile-container {
         max-width: 600px;
@@ -206,7 +205,6 @@
     }
 }
 
-/* タブレット対応 */
 @media (min-width: 768px) and (max-width: 1399px) {
     .profile-container {
         max-width: 500px;
@@ -256,7 +254,6 @@
     }
 }
 
-/* モバイル対応 */
 @media (max-width: 767px) {
     .profile-container {
         margin: 20px;

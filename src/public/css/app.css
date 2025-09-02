@@ -116,7 +116,6 @@ body {
 
 @media (min-width: 1400px) {
 
-    /* ヘッダー */
     .header {
         padding: 12px 40px;
         min-height: 70px;
@@ -126,11 +125,9 @@ body {
         height: 40px;
     }
 
-    /* 検索エリア */
     .header__center {
         max-width: 600px;
         margin: 0 36px;
-            /* ← 左右に余白を追加 */
     }
 
     .search-form {
@@ -145,7 +142,6 @@ body {
         border-radius: 6px;
     }
 
-    /* ナビゲーション */
     .header__right {
         gap: 20px;
     }
@@ -175,18 +171,15 @@ body {
         border-radius: 6px;
     }
 
-    /* コンテナ */
     .container {
         max-width: 1200px;
         padding: 40px 20px;
     }
 
-    /* フォーカス状態の改善 */
     .search-input:focus {
         box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
     }
 
-    /* ホバー効果の強化 */
     .header__right a:hover,
     .header__right .logout-btn:hover,
     .header__right .login-btn:hover {
@@ -201,7 +194,6 @@ body {
 
 @media (min-width: 1540px) {
 
-    /* 特大画面対応 */
     .header {
         padding: 15px 60px;
         min-height: 80px;

@@ -21,7 +21,6 @@ class Item extends Model
         'is_sold',
     ];
 
-    // 画像URLを取得するアクセサ
     public function getImageUrlAttribute()
     {
         if (!$this->image_path) {

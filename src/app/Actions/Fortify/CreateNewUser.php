@@ -21,7 +21,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        // RegisterRequest によるバリデーションを実行
     $request = new RegisterRequest();
     $validator = Validator::make($input, $request->rules());
     $validator->setCustomMessages($request->messages());
@@ -32,7 +31,7 @@ class CreateNewUser implements CreatesNewUsers
         'email' => $input['email'],
         'password' => Hash::make($input['password']),
     ]);
-    $user->sendEmailVerificationNotification(); // ここで送信
+    $user->sendEmailVerificationNotification();
 
     return $user;
     }

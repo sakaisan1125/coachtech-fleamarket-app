@@ -70,7 +70,6 @@
     font-weight: 500;
 }
 
-/* PC対応: 住所編集ページレスポンシブ */
 @media (min-width: 1400px) {
     .address-edit-container {
         max-width: 700px;
@@ -167,7 +166,6 @@
     }
 }
 
-/* モバイル対応 */
 @media (max-width: 767px) {
     .address-edit-container {
         margin: 20px auto;

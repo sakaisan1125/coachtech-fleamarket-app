@@ -19,7 +19,6 @@ class MyListTest extends TestCase
         return $user;
     }
 
-    /** ① 未ログインでも /?tab=mylist は 200 で空表示 */
     public function test_guest_mylist_is_empty_but_200(): void
     {
         $otherUser = User::factory()->create();
@@ -31,19 +30,21 @@ class MyListTest extends TestCase
             ->assertDontSee('LIKED-BY-OTHER');
     }
 
-    /** ② 認証済みユーザー：いいねした商品“だけ”表示（自分の出品は除外） */
     public function test_verified_user_sees_only_liked_items_excluding_self(): void
     {
         $user = $this->createVerifiedUser();
         $this->actingAs($user);
 
         $otherUser = User::factory()->create();
+
         $likedItems = Item::factory()->count(2)->create(['user_id' => $otherUser->id, 'name' => 'LIKED-ITEM-1']);
         $likedItems[1]->update(['name' => 'LIKED-ITEM-2']);
+
         $otherItems = collect([
             Item::factory()->create(['user_id' => $otherUser->id, 'name' => 'OTHER-ITEM-1']),
             Item::factory()->create(['user_id' => $otherUser->id, 'name' => 'OTHER-ITEM-2']),
         ]);
+
         $myItem = Item::factory()->create(['user_id' => $user->id, 'name' => 'MY-ITEM']);
 
         foreach ($likedItems as $item) {
@@ -58,19 +59,18 @@ class MyListTest extends TestCase
         $response->assertDontSee('MY-ITEM');
     }
 
-    /** ③ ログイン済みだがメール未認証 → /email/verify へリダイレクト */
     public function test_unverified_logged_in_is_redirected_to_verify(): void
     {
         $unverifiedUser = User::factory()->create([
             'email_verified_at' => null,
         ]);
+        
         $this->actingAs($unverifiedUser);
 
         $this->get(route('items.index', ['tab' => 'mylist']))
             ->assertRedirect('/email/verify');
     }
 
-    /** ④ 購入済みは「Sold」表示（purchase or is_sold どちらでも通るよう両対応） */
     public function test_sold_items_show_sold_label(): void
     {
         $user = $this->createVerifiedUser();
