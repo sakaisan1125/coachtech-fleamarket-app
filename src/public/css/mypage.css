@@ -186,6 +186,59 @@
     box-shadow: none;
 }
 
+/* .message-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+} */
+
+.message-count-badge {
+    background-color: #f44336;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+.notification-badge {
+    background-color: #f44336;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message-count-badge {
+    position: absolute;
+    /* 絶対位置指定 */
+    top: 10px;
+    /* 画像の上部からの距離 */
+    left: 10px;
+    /* 画像の左側からの距離 */
+    background-color: #f44336;
+    /* バッジの背景色 */
+    color: #ffffff;
+    /* バッジの文字色 */
+    font-size: 14px;
+    /* フォントサイズ */
+    padding: 5px 10px;
+    /* 内側の余白 */
+    border-radius: 50%;
+    /* 丸い形にする */
+    display: inline-block;
+    /* インラインブロック要素 */
+    text-align: center;
+    /* テキストを中央揃え */
+    z-index: 2;
+    /* 他の要素より前面に表示 */
+}
+
 @media (min-width: 1400px) {
     .mypage-container {
         max-width: 1200px;

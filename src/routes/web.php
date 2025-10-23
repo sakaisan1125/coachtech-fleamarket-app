@@ -8,6 +8,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +64,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/address/update', [AddressController::class, 'update'])->name('address.update');
 
     Route::post('/items/{item}/comments', [CommentController::class, 'store'])->name('comments.store');
+
+    Route::get('/chat/{purchaseId}', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
+    Route::get('/chat/{purchaseId}/edit/{messageId}', [ChatController::class, 'edit'])->name('chat.edit');
+    Route::put('/chat/{purchaseId}/update/{messageId}', [ChatController::class, 'update'])->name('chat.update');
+    Route::delete('/chat/{purchaseId}/delete/{messageId}', [ChatController::class, 'destroy'])->name('chat.destroy');
+    Route::post('/chat/{purchaseId}/complete', [ChatController::class, 'completeTransaction'])->name('chat.completeTransaction');
 });

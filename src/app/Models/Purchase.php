@@ -19,11 +19,29 @@ class Purchase extends Model
         return $this->belongsTo(Item::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'purchase_id');
+    }
+
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'seller_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     protected $fillable = [
         'user_id',
         'item_id',
         'address',
-        'payment_method'
+        'payment_method',
+        'seller_id',
+        'completed_at',
+        'is_completed_by_buyer'
     ];
 
 }

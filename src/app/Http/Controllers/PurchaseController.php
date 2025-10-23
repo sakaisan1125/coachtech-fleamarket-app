@@ -45,6 +45,7 @@ class PurchaseController extends Controller
                     'user_id'        => $user->id,
                     'address'        => $validated['address'],
                     'payment_method' => $validated['payment_method'],
+                    'seller_id'      => $item->user_id, // 出品者IDを設定
                 ]);
                 $item->is_sold = true;
                 $item->save();
@@ -183,6 +184,7 @@ class PurchaseController extends Controller
                 'user_id'        => $userId,
                 'address'        => $address,
                 'payment_method' => $pmethod,
+                'seller_id'      => $item->user_id, // 出品者IDを設定
             ]);
             $item->is_sold = true;
             $item->save();
