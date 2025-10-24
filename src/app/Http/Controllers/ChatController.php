@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ChatRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Purchase;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TransactionCompletedMail;
 
 class ChatController extends Controller
 {
@@ -181,10 +183,17 @@ class ChatController extends Controller
         // 購入者が評価した時だけ完了フラグON
         if ($setCompletedByBuyer) {
             $purchase->update(['is_completed_by_buyer' => true]);
+
+            $purchase->loadMissing('seller','item','user');
+            if (!empty($purchase->seller?->email)) {
+                Mail::to($purchase->seller->email)
+                    ->send(new TransactionCompletedMail($purchase));
+            }
         }
 
-        return redirect()->route('chat.index', ['purchaseId' => $purchaseId])
+        return redirect()->route('items.index')
             ->with('success', '評価を送信しました。');
-    }
+        }
+
 
 }

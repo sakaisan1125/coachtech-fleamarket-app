@@ -15,6 +15,18 @@
         </div>
         <div class="profile-info">
             <div class="profile-username">{{ Auth::user()->name ?? 'ユーザー名' }}</div>
+            @if(!is_null($ratingRounded) && $ratingCount > 0)
+                <div class="rating-stars" aria-label="平均評価 {{ $ratingRounded }} / 5（{{ $ratingCount }}件）">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= $ratingRounded)
+                            <span class="star star-filled">★</span>
+                        @else
+                            <span class="star">☆</span>
+                        @endif
+                    @endfor
+                    <!-- <span class="rating-count">（{{ $ratingCount }}）</span> -->
+                </div>
+            @endif
         </div>
         <a href="{{ route('mypage.profile.edit') }}" class="profile-edit-btn">プロフィールを編集</a>
     </div>
@@ -50,7 +62,10 @@
                     <a href="{{ route('items.show', $item->id) }}" class="item-link">
                 @endif
                     <div class="item-image-placeholder">
-                        @if ($messageCount > 0)
+                        <!-- @if ($messageCount > 0)
+                            <span class="message-count-badge">{{ $messageCount }}</span>
+                        @endif -->
+                        @if ($page === 'transactions' && $messageCount > 0)
                             <span class="message-count-badge">{{ $messageCount }}</span>
                         @endif
                         @if ($imgUrl)

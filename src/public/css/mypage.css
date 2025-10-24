@@ -239,6 +239,29 @@
     /* 他の要素より前面に表示 */
 }
 
+.rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.star {
+    font-size: 40px;
+    height: 40px;
+    color: #D9D9D9;
+}
+
+.star-filled {
+    color: #FFF048;
+}
+
+/* .rating-count {
+    margin-left: 4px;
+    font-size: 12px;
+    color: #D9D9D9;
+} */
+
 @media (min-width: 1400px) {
     .mypage-container {
         max-width: 1200px;

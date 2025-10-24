@@ -16,6 +16,13 @@ class MypageController extends Controller
         $page = $request->get('page', 'sell');
         $user = Auth::user();
 
+        // ★ 評価の件数と平均（四捨五入）
+        $ratingAgg = $user->ratingsReceived()
+            ->selectRaw('COUNT(*) as cnt, AVG(rating) as avg_rating')
+            ->first();
+        $ratingCount   = (int) ($ratingAgg->cnt ?? 0);
+        $ratingRounded = $ratingCount > 0 ? (int) round($ratingAgg->avg_rating) : null;
+
         if ($page === 'buy') {
             $items = Item::whereHas('purchase', function ($query) use ($user) {
                 $query->where('user_id', $user->id);
@@ -58,7 +65,7 @@ class MypageController extends Controller
         }
         $totalMessageCount = array_sum($messageCounts);
 
-        return view('mypage.index', compact('items', 'page', 'messageCounts', 'totalMessageCount'));
+        return view('mypage.index', compact('items', 'page', 'messageCounts', 'totalMessageCount', 'ratingCount', 'ratingRounded'));
     }
 
     public function editProfile()
