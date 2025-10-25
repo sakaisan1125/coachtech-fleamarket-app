@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\Purchase;
 use App\Models\Message;
 use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\DB;
 
 class MypageController extends Controller
 {
@@ -16,37 +17,35 @@ class MypageController extends Controller
         $page = $request->get('page', 'sell');
         $user = Auth::user();
 
-        // ★ 評価の件数と平均（四捨五入）
         $ratingAgg = $user->ratingsReceived()
             ->selectRaw('COUNT(*) as cnt, AVG(rating) as avg_rating')
             ->first();
-        $ratingCount   = (int) ($ratingAgg->cnt ?? 0);
+        $ratingCount = (int) ($ratingAgg->cnt ?? 0);
         $ratingRounded = $ratingCount > 0 ? (int) round($ratingAgg->avg_rating) : null;
 
         if ($page === 'buy') {
-            $items = Item::whereHas('purchase', function ($query) use ($user) {
-                $query->where('user_id', $user->id);
-            })->latest()->get();
+            $items = Item::whereHas('purchase', function ($purchaseQuery) use ($user) {
+                    $purchaseQuery->where('user_id', $user->id);
+                })
+                ->latest()
+                ->get();
         } elseif ($page === 'transactions') {
-            // 購入した商品
             $purchasedItems = Purchase::where('user_id', $user->id)
                 ->whereNull('completed_at')
                 ->with('item')
                 ->latest()
                 ->get();
 
-            // 出品して売れた商品
             $soldItems = Purchase::where('seller_id', $user->id)
                 ->whereNull('completed_at')
                 ->with('item')
                 ->latest()
                 ->get();
 
-            // 購入した商品と売れた商品を統合
             $items = $purchasedItems->merge($soldItems);
-            $items = $items->sortByDesc(function ($item) use ($user) {
-                return Message::where('purchase_id', $item->id)
-                    ->where('sender_id', '!=', $user->id) // 相手のメッセージのみ
+            $items = $items->sortByDesc(function ($purchase) use ($user) {
+                return Message::where('purchase_id', $purchase->id)
+                    ->where('sender_id', '!=', $user->id)
                     ->latest()
                     ->value('created_at');
             });
@@ -54,18 +53,28 @@ class MypageController extends Controller
             $items = $user->items()->latest()->get();
         }
 
-        // 取引中の商品ごとのメッセージ件数を取得
-        $messageCounts = [];
-        foreach ($items as $item) {
-            $purchaseId = $item->id;
-            $messageCounts[$purchaseId] = Message::where('purchase_id', $purchaseId)
-                ->where('sender_id', '!=', $user->id) // 相手のメッセージのみ
-                ->where('is_read', false) // 未読のみ
-                ->count();
-        }
+        $ongoingPurchaseIds = Purchase::where(function ($involvedPurchaseFilter) use ($user) {
+                $involvedPurchaseFilter
+                    ->where('user_id', $user->id)
+                    ->orWhere('seller_id', $user->id);
+            })
+            ->whereNull('completed_at')
+            ->pluck('id')
+            ->all();
+
+        $messageCounts = Message::select('purchase_id', DB::raw('COUNT(*) as cnt'))
+            ->whereIn('purchase_id', $ongoingPurchaseIds)
+            ->where('sender_id', '!=', $user->id)
+            ->where('is_read', false)
+            ->groupBy('purchase_id')
+            ->pluck('cnt', 'purchase_id')
+            ->toArray();
+
         $totalMessageCount = array_sum($messageCounts);
 
-        return view('mypage.index', compact('items', 'page', 'messageCounts', 'totalMessageCount', 'ratingCount', 'ratingRounded'));
+        return view('mypage.index', compact(
+            'items', 'page', 'messageCounts', 'totalMessageCount', 'ratingCount', 'ratingRounded'
+        ));
     }
 
     public function editProfile()
@@ -98,7 +107,6 @@ class MypageController extends Controller
     {
         $user = Auth::user();
 
-        // 取引中の商品を取得
         $transactionItems = Purchase::where('seller_id', $user->id)
             ->whereNull('completed_at')
             ->with('item')

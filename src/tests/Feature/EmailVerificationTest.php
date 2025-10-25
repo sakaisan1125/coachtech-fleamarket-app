@@ -40,6 +40,7 @@ class EmailVerificationTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('認証はこちらから');
         $response->assertSee(route('email.verified'));
+
         $redirectResponse = $this->get(route('email.verified'));
         $redirectResponse->assertStatus(200);
         $redirectResponse->assertSee('認証メール内のリンクをクリックすると認証が完了します。');
@@ -59,7 +60,7 @@ class EmailVerificationTest extends TestCase
         ]);
 
         $response = $this->get($verificationUrl);
-        $response->assertRedirect('/');
+        $response->assertRedirect('mypage/profile');
         $user->refresh();
         $this->assertNotNull($user->email_verified_at);
     }

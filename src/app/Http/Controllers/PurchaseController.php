@@ -18,6 +18,7 @@ class PurchaseController extends Controller
     {
         $item = Item::findOrFail($item_id);
         $user = Auth::user();
+
         return view('items.purchase', [
             'item'    => $item,
             'user'    => $user,
@@ -34,6 +35,7 @@ class PurchaseController extends Controller
         if ($item->is_sold ?? false) {
             return redirect()->route('items.index')->with('error', 'この商品はすでに購入されています');
         }
+
         if ((int)$item->user_id === (int)$user->id) {
             return redirect()->route('items.index')->with('error', '自分の出品は購入できません');
         }
@@ -45,11 +47,12 @@ class PurchaseController extends Controller
                     'user_id'        => $user->id,
                     'address'        => $validated['address'],
                     'payment_method' => $validated['payment_method'],
-                    'seller_id'      => $item->user_id, // 出品者IDを設定
+                    'seller_id'      => $item->user_id,
                 ]);
                 $item->is_sold = true;
                 $item->save();
             });
+
             return redirect()->route('items.index')->with('success', '購入が完了しました');
         }
 
@@ -120,6 +123,7 @@ class PurchaseController extends Controller
                 $this->finalizePurchaseFromMetadata($session->metadata);
                 return redirect()->route('items.index')->with('success', '決済が完了しました！');
             }
+
             return redirect()->route('items.index')->with('error', '決済が未完了です');
         }
 
@@ -184,7 +188,7 @@ class PurchaseController extends Controller
                 'user_id'        => $userId,
                 'address'        => $address,
                 'payment_method' => $pmethod,
-                'seller_id'      => $item->user_id, // 出品者IDを設定
+                'seller_id'      => $item->user_id,
             ]);
             $item->is_sold = true;
             $item->save();

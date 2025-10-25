@@ -64,7 +64,7 @@ class MyListTest extends TestCase
         $unverifiedUser = User::factory()->create([
             'email_verified_at' => null,
         ]);
-        
+
         $this->actingAs($unverifiedUser);
 
         $this->get(route('items.index', ['tab' => 'mylist']))
@@ -76,7 +76,12 @@ class MyListTest extends TestCase
         $user = $this->createVerifiedUser();
         $this->actingAs($user);
 
-        $soldItem = Item::factory()->create(['name' => 'SOLD-ITEM']);
+        $seller = User::factory()->create();
+        $soldItem = Item::factory()->create([
+            'name' => 'SOLD-ITEM',
+            'user_id' => $seller->id,
+        ]);
+
         $user->likes()->create(['item_id' => $soldItem->id]);
 
         $soldItem->update(['is_sold' => true]);
@@ -84,6 +89,7 @@ class MyListTest extends TestCase
         DB::table('purchases')->insert([
             'item_id'        => $soldItem->id,
             'user_id'        => User::factory()->create()->id,
+            'seller_id'      => $seller->id,
             'address'        => '和歌山市1-2-3',
             'payment_method' => 'card',
             'created_at'     => now(),
@@ -92,6 +98,6 @@ class MyListTest extends TestCase
 
         $this->get(route('items.index', ['tab' => 'mylist']))
             ->assertOk()
-            ->assertSee('SOLD'); 
+            ->assertSee('SOLD');
     }
 }

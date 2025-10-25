@@ -23,14 +23,27 @@ class UserProfileTest extends TestCase
             'address' => '北海道札幌市1-2-3',
         ]);
 
+        $seller = User::factory()->create();
+
         $sellItem1 = Item::factory()->create(['user_id' => $user->id, 'name' => '出品商品A']);
         $sellItem2 = Item::factory()->create(['user_id' => $user->id, 'name' => '出品商品B']);
 
         $buyItem1 = Item::factory()->create(['name' => '購入商品A']);
         $buyItem2 = Item::factory()->create(['name' => '購入商品B']);
-        
-        $user->purchases()->create(['item_id' => $buyItem1->id, 'address' => $user->address, 'payment_method' => 'card']);
-        $user->purchases()->create(['item_id' => $buyItem2->id, 'address' => $user->address, 'payment_method' => 'card']);
+
+        $user->purchases()->create([
+            'item_id' => $buyItem1->id,
+            'address' => $user->address,
+            'payment_method' => 'card',
+            'seller_id' => $seller->id,
+        ]);
+
+        $user->purchases()->create([
+            'item_id' => $buyItem2->id,
+            'address' => $user->address,
+            'payment_method' => 'card',
+            'seller_id' => $seller->id,
+        ]);
 
         $this->actingAs($user);
 

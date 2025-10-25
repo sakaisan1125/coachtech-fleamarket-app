@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -9,10 +10,10 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('purchase_id'); // 取引ID
-            $table->unsignedBigInteger('rated_user_id'); // 評価されたユーザーID
-            $table->unsignedBigInteger('rater_user_id'); // 評価したユーザーID
-            $table->integer('rating'); // 評価（1〜5）
+            $table->unsignedBigInteger('purchase_id');
+            $table->unsignedBigInteger('rated_user_id');
+            $table->unsignedBigInteger('rater_user_id');
+            $table->integer('rating');
             $table->timestamps();
 
             $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade');

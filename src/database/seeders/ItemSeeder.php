@@ -61,7 +61,7 @@ class ItemSeeder extends Seeder
                 'is_sold'     => false,
             ],
             [
-                'user_id'     => 1,
+                'user_id'     => 2,
                 'name'        => 'マイク',
                 'description' => '高音質のレコーディング用マイク',
                 'brand'       => 'なし',
@@ -71,7 +71,7 @@ class ItemSeeder extends Seeder
                 'is_sold'     => false,
             ],
             [
-                'user_id'     => 1,
+                'user_id'     => 2,
                 'name'        => 'ショルダーバッグ',
                 'description' => 'おしゃれなショルダーバッグ',
                 'brand'       => null,
@@ -81,7 +81,7 @@ class ItemSeeder extends Seeder
                 'is_sold'     => false,
             ],
                         [
-                'user_id'     => 1,
+                'user_id'     => 2,
                 'name'        => 'タンブラー',
                 'description' => '使いやすいタンブラー',
                 'brand'       => 'なし',
@@ -92,7 +92,7 @@ class ItemSeeder extends Seeder
             ],
 
             [
-                'user_id'     => 1,
+                'user_id'     => 2,
                 'name'        => 'コーヒーミル',
                 'description' => '手動のコーヒーミル',
                 'brand'       => 'Starbacks',
@@ -102,7 +102,7 @@ class ItemSeeder extends Seeder
                 'is_sold'     => false,
             ],
             [
-                'user_id'     => 1,
+                'user_id'     => 2,
                 'name'        => 'メイクセット',
                 'description' => '便利なメイクアップセット',
                 'brand'       => null,

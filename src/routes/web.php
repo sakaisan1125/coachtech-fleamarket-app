@@ -10,13 +10,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ChatController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-| ここにWebルートを定義します。
-*/
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/email/verify', function () {
         return view('auth.verify-email');
@@ -24,7 +17,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
-        return redirect('/')->with('success', 'メール認証が完了しました！');
+        return redirect()->route('mypage.profile.edit')
+            ->with('success', 'メール認証が完了しました！');
     })->middleware(['signed'])->name('verification.verify');
 
     Route::post('/email/verification-notification', function (Request $request) {
@@ -34,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/email/verified', function () {
         if (auth()->user()->hasVerifiedEmail()) {
-            return redirect()->route('items.index');
+            return redirect()->route('mypage.profile.edit');
         }
         return view('auth.verified');
     })->name('email.verified');

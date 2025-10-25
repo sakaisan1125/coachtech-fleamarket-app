@@ -16,7 +16,6 @@ class ItemListTest extends TestCase
     /** @test */
     public function all_items_are_displayed_on_item_list_page()
     {
-        
         $seller = User::create([
             'name' => '出品者',
             'email' => 'seller@example.com',
@@ -34,7 +33,6 @@ class ItemListTest extends TestCase
         ]);
 
         $response = $this->get('/');
-
         $response->assertStatus(200);
         $response->assertSee('テスト商品1');
     }
@@ -42,7 +40,6 @@ class ItemListTest extends TestCase
     /** @test */
     public function sold_items_display_sold_label()
     {
-        
         $seller = User::create([
             'name' => '出品者',
             'email' => 'seller@example.com',
@@ -70,6 +67,7 @@ class ItemListTest extends TestCase
         Purchase::create([
             'user_id' => $buyer->id,
             'item_id' => $item->id,
+            'seller_id' => $seller->id,
             'payment_method' => 'card',
             'postal_code' => '123-4567',
             'address' => '東京都渋谷区',
@@ -77,16 +75,14 @@ class ItemListTest extends TestCase
         ]);
 
         $response = $this->get('/');
-
         $response->assertStatus(200);
         $response->assertSee('売り切れ商品');
-        $response->assertSee('SOLD'); 
+        $response->assertSee('SOLD');
     }
 
     /** @test */
     public function logged_in_user_cannot_see_own_items()
     {
-        
         $user = $this->createVerifiedUser([
             'name' => 'ログインユーザー',
             'email' => 'user@example.com',
@@ -118,7 +114,6 @@ class ItemListTest extends TestCase
         $this->actingAs($user);
 
         $response = $this->get('/');
-
         $response->assertStatus(200);
         $response->assertDontSee('自分の商品');
         $response->assertSee('他人の商品');
@@ -127,7 +122,6 @@ class ItemListTest extends TestCase
     /** @test */
     public function guest_user_can_see_all_items()
     {
-        
         $user1 = $this->createVerifiedUser([
             'name' => 'ユーザー1',
             'email' => 'user1@example.com',
@@ -157,7 +151,6 @@ class ItemListTest extends TestCase
         ]);
 
         $response = $this->get('/');
-
         $response->assertStatus(200);
         $response->assertSee('ユーザー1の商品');
         $response->assertSee('ユーザー2の商品');

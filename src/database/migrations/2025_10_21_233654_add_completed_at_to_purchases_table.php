@@ -9,7 +9,7 @@ class AddCompletedAtToPurchasesTable extends Migration
     public function up()
     {
         Schema::table('purchases', function (Blueprint $table) {
-            $table->timestamp('completed_at')->nullable()->after('updated_at'); // NULLを許可
+            $table->timestamp('completed_at')->nullable()->after('updated_at');
         });
     }
 

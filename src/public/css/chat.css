@@ -1,31 +1,27 @@
 .chat-container {
     display: flex;
     gap: 0;
-    max-width: 1512px;
     margin: 0 auto;
     padding: 0;
     background-color: #ffffff;
-    height: 902px;
+    height: 100vh;
 }
 
 .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* ボタンを右端に配置 */
     gap: 10px;
     margin-bottom: 10px;
     height: 80px;
     padding: 15px;
 }
 
-/* サイドバー */
 .sidebar {
     width: 250px;
     background-color: #868686;
     padding: 15px;
     border-right: 1px solid #ddd;
-    margin-right: 0;
 }
 
 .sidebar h2 {
@@ -47,46 +43,33 @@
 
 .transaction-list a {
     display: block;
-    /* ブロック要素に変更 */
     text-decoration: none;
     color: #000000;
     background-color: #EEEFEB;
-    /* 背景色を設定 */
     padding: 10px 15px;
-    /* 内側の余白を設定 */
     border-radius: 5px;
-    /* 角を丸くする */
     text-align: center;
-    /* テキストを中央揃え */
     font-size: 24px;
-    /* フォントサイズを設定 */
     margin-bottom: 10px;
-    /* 下に余白を追加 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* 軽い影を追加 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .transaction-list a:hover {
     text-decoration: underline;
 }
 
-/* メインコンテンツ */
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* ヘッダー */
 .chat-header {
     border-bottom: 2px solid #5F5F5F;
     padding-bottom: 15px;
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .user-icon-large {
@@ -94,10 +77,7 @@
     height: 79px;
     object-fit: cover;
     border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 15px;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin: 15px 10px 10px 15px;
 }
 
 .default-icon {
@@ -105,10 +85,7 @@
     width: 79px;
     height: 79px;
     border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 15px;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin: 15px 10px 10px 15px;
 }
 
 .user-name {
@@ -118,7 +95,6 @@
     margin: 0;
     color: #000000;
     flex-grow: 1;
-    /* ボタンとの間隔を調整 */
 }
 
 .product-info {
@@ -148,7 +124,6 @@
     color: #000000;
 }
 
-/* チャットメッセージ */
 .chat-messages {
     flex: 1;
     margin-bottom: 20px;
@@ -165,18 +140,15 @@
     align-items: flex-start;
     gap: 10px;
     max-width: 50%;
-    /* メッセージの幅を制限 */
 }
 
 .my-message {
     margin-left: auto;
-    /* 自分のメッセージを右側に配置 */
     border-radius: 10px;
 }
 
 .other-message {
     margin-right: auto;
-    /* 相手のメッセージを左側に配置 */
     border-radius: 10px;
 }
 
@@ -187,7 +159,6 @@
     color: #000000;
     word-wrap: break-word;
     border-radius: 4px;
-
 }
 
 .message-header {
@@ -211,17 +182,10 @@
 }
 
 .message-user-name {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
     margin: 0;
     color: #000000;
-}
-
-.user-icon {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%;
 }
 
 .message-content {
@@ -233,7 +197,6 @@
     color: #666;
 }
 
-/* フォーム */
 .chat-form {
     display: flex;
     align-items: center;
@@ -256,6 +219,7 @@ textarea {
     border: none;
     padding: 0;
     cursor: pointer;
+    margin-right: 40px;
 }
 
 .send-icon {
@@ -289,43 +253,22 @@ textarea {
     display: inline-block;
     margin-right: 10px;
     background-color: #ffffff;
-    /* ボタンの背景色 */
     border-radius: 10px;
-    /* 角を丸くする */
     padding: 10px 20px;
-    /* 内側の余白を設定 */
     font-size: 20px;
-    /* フォントサイズを設定 */
-    color: #ffffff;
-    /* テキストの色 */
-    font-weight: bold;
-    /* テキストを太字に */
-    text-align: center;
-    /* テキストを中央揃え */
-    border: 2px solid #FF5555;
     color: #FF5555;
-}
-
-.add-image-text {
-    display: inline-block;
-}
-
-.add-image-icon {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #FF5555;
 }
 
 .image-upload-input {
     display: none;
-    /* ファイル選択ボタンを非表示にする */
 }
 
 .image-upload-label:hover {
     background-color: #ffbbc1;
-    /* ホバー時の背景色 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    /* ホバー時の影を強調 */
 }
 
 .message-image {
@@ -360,17 +303,14 @@ textarea {
 .message-body form {
     display: flex;
     gap: 10px;
-    /* ボタン間の余白を設定 */
     justify-content: flex-start;
-    /* 左揃え */
     align-items: center;
-    /* ボタンを縦方向で中央揃え */
 }
 
 .edit-button,
 .delete-button {
     background-color: #ffffff;
-    border: 0px solid #ffffff;
+    border: none;
     padding: 5px 10px;
     font-size: 15px;
     cursor: pointer;
@@ -379,63 +319,47 @@ textarea {
     box-shadow: 0 4px 4px 0 #00000040;
 }
 
-
 .update-button,
 .cancel-button {
     width: 70px;
-    /* ボタンの幅を統一 */
     height: 40px;
-    /* ボタンの高さを統一 */
     font-size: 12px;
-    /* フォントサイズを調整 */
     border-radius: 5px;
-    /* 角を丸くする */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* テキストを中央揃え */
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    /* 軽い影を追加 */
     margin-right: 10px;
 }
 
 .update-button {
     background-color: #4CAF50;
-    /* 更新ボタンの背景色 */
     color: #ffffff;
-    /* 更新ボタンの文字色 */
     border: none;
 }
 
 .cancel-button {
     background-color: #f44336;
-    /* キャンセルボタンの背景色 */
     color: #ffffff;
-    /* キャンセルボタンの文字色 */
     border: none;
 }
 
 .update-button:hover {
     background-color: #45a049;
-    /* 更新ボタンのホバー時の色 */
 }
 
 .cancel-button:hover {
     background-color: #d32f2f;
-    /* キャンセルボタンのホバー時の色 */
 }
 
 .modal {
     display: none;
-    /* 初期状態では非表示 */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #FDFCE6;
-    /* モーダル背景色 */
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -443,50 +367,35 @@ textarea {
     width: 600px;
     height: 370px;
     border: 1px solid #000000;
-    /* モーダルの幅 */
 }
 
 .modal-content h2 {
     font-size: 35px;
-    font-weight: normal;
-    text-align: left;
-    color: #000000;
     margin-bottom: 15px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    /* 下に余白を追加 */
-    padding-left: 15px;
-    /* 左側に余白を追加 */
+    padding: 10px 15px;
     border-bottom: 1px solid #000000;
-    /* ボーダーを端まで維持 */
     width: 100%;
-    /* ボーダーをコンテナの幅いっぱいに */
 }
 
 .modal-content p {
     font-size: 20px;
-    font-weight: normal;
     margin: 15px 0;
     color: #868686;
-    text-align: left;
     padding-left: 15px;
     width: 100%;
 }
 
 .rating-stars label {
     font-size: 100px;
-    line-height: 1;
-    /* 余計な高さを出さない */
     color: #D9D9D9;
     cursor: pointer;
     user-select: none;
     display: inline-block;
 }
+
 .send-rating {
     background-color: #FF8282;
-    /* ボタン背景色 */
     color: #ffffff;
-    /* ボタン文字色 */
     border: none;
     padding: 4px 20px;
     border-radius: 5px;
@@ -498,27 +407,20 @@ textarea {
 
 .send-rating:hover {
     background-color: #e63946;
-    /* ホバー時の背景色 */
 }
 
 .rating-stars {
     display: flex;
     flex-direction: row-reverse;
-    /* 右→左に表示 */
     justify-content: center;
     gap: 12px;
-    padding: 0 15px;
-    padding-bottom: 20px;
+    padding: 0 15px 20px;
     border-bottom: 1px solid #000;
     width: 100%;
 }
-/* .rating-stars input[type="radio"]:checked+label {
-    color: #FFF048;
-} */
 
 .rating-stars input[type="radio"] {
     display: none;
-    /* ラジオボタンを非表示 */
 }
 
 .modal-content {
@@ -542,7 +444,85 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    /* ← これでボタンが右端へ */
     gap: 12px;
-    /* 星とボタンの間の余白 */
+}
+
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .sidebar {
+        width: 230px;
+    }
+
+    .sidebar h2 {
+        font-size: 26px;
+    }
+
+    .transaction-list a {
+        font-size: 22px;
+        padding: 8px 12px;
+    }
+
+    .user-name {
+        font-size: 32px;
+    }
+
+    .product-details h1 {
+        font-size: 42px;
+    }
+
+    .product-details p {
+        font-size: 30px;
+    }
+
+    .product-image {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .sidebar {
+        width: 200px;
+        padding: 10px;
+    }
+
+    .sidebar h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .transaction-list a {
+        font-size: 18px;
+        padding: 8px 10px;
+    }
+
+    .product-image {
+        width: 160px;
+        height: 160px;
+    }
+
+    .product-details h1 {
+        font-size: 32px;
+    }
+
+    .product-details p {
+        font-size: 24px;
+    }
+
+    .user-name {
+        font-size: 26px;
+    }
+
+    .message-body {
+        font-size: 18px;
+    }
+
+    textarea {
+        font-size: 18px;
+        margin: 10px;
+    }
+
+    .send-icon {
+        width: 60px;
+        height: 45px;
+    }
 }

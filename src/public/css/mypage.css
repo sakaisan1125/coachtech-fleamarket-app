@@ -1,32 +1,23 @@
 .mypage-container {
-    max-width: 1200px;
     margin: 40px auto;
-    padding: 0 20px;
 }
 
 .profile-area {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 32px;
-    margin-top: 24px;
     gap: 32px;
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
+    margin: 24px 0 32px;
 }
 
 .profile-icon {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     background: #ddd;
     border-radius: 50%;
-    display: inline-block;
     position: relative;
     overflow: hidden;
     border: none;
-    box-shadow: none;
     margin-left: 150px;
 }
 
@@ -43,92 +34,132 @@
 }
 
 .profile-username {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-left: 16px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.25;
+    margin-left: 8px;
 }
 
 .profile-edit-btn {
-    display: inline-block;
-    border: 2px solid #ff5c5c;
-    color: #ff5c5c;
-    background: #fff;
-    border-radius: 8px;
-    padding: 10px 28px;
-    font-size: 1.1rem;
-    font-weight: bold;
     margin-left: auto;
+    display: inline-block;
+    border: 2px solid #FF5555;
+    color: #FF5555;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-    box-shadow: none;
+    transition: background .2s, color .2s;
 }
 
 .profile-edit-btn:hover {
     background: #ff5c5c;
     color: #fff;
-    transform: none;
-    box-shadow: none;
+}
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 6px 0 0 8px;
+}
+
+.star {
+    font-size: 28px;
+    height: 28px;
+    color: #D9D9D9;
+}
+
+.star-filled {
+    color: #FFF048;
+}
+
+.mypage-tab-container {
+    position: relative;
+}
+
+.mypage-tab-container::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    bottom: -1px;
+    height: 2px;
+    background: #5F5F5F;
+    pointer-events: none;
 }
 
 .mypage-tab-menu {
     display: flex;
-    gap: 32px;
-    border-bottom: 2px solid #bbb;
-    margin-bottom: 8px;
-    margin-left: 40px;
+    align-items: center;
+    gap: 60px;
+    margin: 0 auto 12px;
+    padding: 0 0 0 52px;
+    position: relative;
+    border-bottom: none;
 }
 
 .mypage-tab {
-    font-weight: bold;
-    color: #888;
-    padding-bottom: 8px;
-    border-bottom: none;
+    display: inline-block;
+    font-weight: 700;
+    color: #5F5F5F;
     text-decoration: none;
     cursor: pointer;
-    font-size: 17px;
-    transition: color 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    padding: 10px 0;
+    transition: color .2s;
 }
 
 .mypage-tab.active {
-    color: #ff2424;
-    border-bottom: none;
-    font-weight: bold;
+    color: #FF0000;
+}
+
+.notification-badge {
+    background: #FF0000;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    padding: 4px 7px;
+    border-radius: 9999px;
+    font-weight: 700;
+    margin-left: 6px;
+    display: inline-block;
+    transform: translateY(-1px);
 }
 
 .item-list {
-    display: flex;
-    gap: 48px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-    padding-left: 40px;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 48px;
+    margin-top: 32px;
+    padding: 0 40px;
 }
 
 .item-card {
-    width: 240px;
     text-align: left;
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    transition: none;
 }
 
-.item-card:hover {
-    transform: none;
-    box-shadow: none;
+.item-card a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .item-image-placeholder {
-    width: 240px;
-    height: 240px;
+    width: 290px;
+    height: 320px;
+    aspect-ratio: 1 / 1;
     background: #e3e3e3;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    color: #222;
+    font-size: 24px;
+    color: #D9D9D9;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-radius: 4px;
     overflow: hidden;
     position: relative;
 }
@@ -137,542 +168,231 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-}
-
-.item-image-text {
-    color: #222;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
 }
 
 .item-name {
-    font-size: 15px;
-    color: #222;
-    margin-left: 0;
-    margin-top: 0;
-    font-weight: normal;
-    letter-spacing: 1px;
-    padding: 0;
-    min-height: auto;
-}
-
-.item-card a {
-    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    letter-spacing: .02em;
 }
 
 .sold-badge {
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 10px;
+    left: 10px;
     background: #ff2424;
     color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 4px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 3px 10px;
     border-radius: 6px;
     z-index: 2;
 }
 
-.no-items {
-    text-align: center;
-    color: #666;
-    font-size: 16px;
-    margin: 60px 0;
-    padding: 40px;
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-/* .message-count {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-} */
-
-.message-count-badge {
-    background-color: #f44336;
-    color: #ffffff;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
-}
-
-.notification-badge {
-    background-color: #f44336;
-    color: #ffffff;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: 5px;
-    font-weight: bold;
-    text-align: center;
-}
-
 .message-count-badge {
     position: absolute;
-    /* 絶対位置指定 */
     top: 10px;
-    /* 画像の上部からの距離 */
     left: 10px;
-    /* 画像の左側からの距離 */
-    background-color: #f44336;
-    /* バッジの背景色 */
-    color: #ffffff;
-    /* バッジの文字色 */
-    font-size: 14px;
-    /* フォントサイズ */
-    padding: 5px 10px;
-    /* 内側の余白 */
-    border-radius: 50%;
-    /* 丸い形にする */
-    display: inline-block;
-    /* インラインブロック要素 */
-    text-align: center;
-    /* テキストを中央揃え */
-    z-index: 2;
-    /* 他の要素より前面に表示 */
-}
-
-.rating-stars {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 6px;
-}
-
-.star {
-    font-size: 40px;
-    height: 40px;
-    color: #D9D9D9;
-}
-
-.star-filled {
-    color: #FFF048;
-}
-
-/* .rating-count {
-    margin-left: 4px;
+    background: #f44336;
+    color: #fff;
     font-size: 12px;
-    color: #D9D9D9;
-} */
+    line-height: 1;
+    padding: 5px 7px;
+    border-radius: 9999px;
+    font-weight: 700;
+    z-index: 2;
+}
 
-@media (min-width: 1400px) {
-    .mypage-container {
-        max-width: 1200px;
-        margin: 50px auto;
-        padding: 0 30px;
-    }
-
-    .profile-area {
-        background: transparent;
-        border-radius: 0;
-        padding: 0;
-        margin-bottom: 40px;
-        margin-top: 30px;
-        gap: 40px;
-        box-shadow: none;
-    }
-
-    .profile-area:hover {
-        box-shadow: none;
-    }
-
+@media (min-width: 1400px) and (max-width: 1540px) {
     .profile-icon {
-        width: 140px;
-        height: 140px;
-        border: none;
-        box-shadow: none;
-        transition: none;
         margin-left: 150px;
     }
 
-    .profile-icon:hover {
-        transform: none;
-    }
-
     .profile-username {
-        font-size: 2.5rem;
-        margin-left: 0;
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    .profile-edit-btn {
-        padding: 12px 32px;
-        font-size: 1.2rem;
-        border-radius: 10px;
-        border-width: 3px;
-        transition: all 0.3s;
-        box-shadow: none;
-    }
-
-    .profile-edit-btn:hover {
-        transform: none;
-        box-shadow: none;
+        font-size: 32px;
     }
 
     .mypage-tab-menu {
-        gap: 40px;
-        margin-left: 50px;
-        margin-bottom: 12px;
-        padding-bottom: 12px;
+        gap: 44px;
+        padding: 0 0 0 48px;
     }
 
     .mypage-tab {
         font-size: 20px;
-        padding-bottom: 12px;
-        transition: all 0.3s;
-        position: relative;
-    }
-
-    .mypage-tab:hover {
-        color: #ff4444;
-        transform: none;
-    }
-
-    .mypage-tab.active {
-        color: #ff2424;
-    }
-
-    .mypage-tab.active::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: #ff2424;
-        border-radius: 2px;
+        padding: 12px 0;
     }
 
     .item-list {
-        display: grid;
+        gap: 32px 48px;
+        padding: 0 48px;
         grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        margin-top: 50px;
-        padding-left: 50px;
-        padding-right: 50px;
-        justify-items: center;
-    }
-
-    .item-card {
-        width: 280px;
-        transition: none;
-        border-radius: 0;
-        overflow: visible;
-        background: transparent;
-        box-shadow: none;
-    }
-
-    .item-card:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
-    .item-image-placeholder {
-        width: 280px;
-        height: 280px;
-        border-radius: 12px;
-        margin-bottom: 15px;
-        font-size: 32px;
-    }
-
-    .item-image-text {
-        font-size: 28px;
-    }
-
-    .item-name {
-        font-size: 18px;
-        padding: 0;
-        margin-top: 5px;
-        line-height: 1.4;
-        min-height: auto;
-        display: block;
-    }
-
-    .sold-badge {
-        top: 15px;
-        left: 15px;
-        font-size: 18px;
-        padding: 6px 16px;
-        border-radius: 8px;
-    }
-
-    .no-items {
-        font-size: 18px;
-        margin: 80px 0;
-        padding: 50px;
-        background: transparent;
-        border-radius: 0;
-        box-shadow: none;
     }
 }
 
-@media (min-width: 1540px) {
-    .mypage-container {
-        max-width: 1400px;
-        margin: 60px auto;
-        padding: 0 40px;
-    }
-
-    .profile-area {
-        padding: 0;
-        margin-bottom: 50px;
-        gap: 50px;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-    }
-
+@media (min-width: 1024px) and (max-width: 1399px) {
     .profile-icon {
-        width: 160px;
-        height: 160px;
-        border: none;
-        box-shadow: none;
-        margin-left: 200px;
-    }
-
-    .profile-username {
-        font-size: 3rem;
-    }
-
-    .profile-edit-btn {
-        padding: 15px 40px;
-        font-size: 1.3rem;
-        border-radius: 12px;
-        box-shadow: none;
-    }
-
-    .mypage-tab-menu {
-        gap: 50px;
-        margin-left: 60px;
-        padding-bottom: 15px;
-    }
-
-    .mypage-tab {
-        font-size: 22px;
-        padding-bottom: 15px;
-    }
-
-    .item-list {
-        gap: 50px;
-        grid-template-columns: repeat(4, 1fr);
-        margin-top: 60px;
-        padding-left: 60px;
-        padding-right: 60px;
-        display: grid;
-        grid-template-rows: auto;
-        justify-content: flex-start;
-    }
-
-    .item-card {
-        width: 320px;
-        background: transparent;
-        box-shadow: none;
-        border-radius: 0;
-    }
-
-    .item-image-placeholder {
-        width: 320px;
-        height: 320px;
-        font-size: 36px;
-    }
-
-    .item-image-text {
-        font-size: 32px;
-    }
-
-    .item-name {
-        font-size: 20px;
-        padding: 0;
-        min-height: auto;
-    }
-
-    .sold-badge {
-        font-size: 20px;
-        padding: 8px 20px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1399px) {
-    .mypage-container {
-        margin: 30px auto;
-        padding: 0 25px;
-    }
-
-    .profile-area {
-        background: transparent;
-        border-radius: 0;
-        padding: 0;
-        margin-bottom: 30px;
-        box-shadow: none;
-    }
-
-    .profile-icon {
-        width: 100px;
-        height: 100px;
-        border: none;
-        box-shadow: none;
         margin-left: 100px;
     }
 
     .profile-username {
-        font-size: 1.8rem;
-        margin-left: 0;
-    }
-
-    .profile-edit-btn {
-        padding: 8px 20px;
-        font-size: 1rem;
-        box-shadow: none;
+        font-size: 30px;
     }
 
     .mypage-tab-menu {
-        gap: 25px;
-        margin-left: 30px;
+        gap: 40px;
+        padding: 0 0 0 36px;
+    }
+
+    .mypage-tab {
+        font-size: 19px;
+    }
+
+    .item-list {
+        padding: 0 36px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 851px) and (max-width: 1023px) {
+    .profile-icon {
+        margin-left: 60px;
+        width: 130px;
+        height: 130px;
+    }
+
+    .profile-username {
+        font-size: 26px;
+    }
+
+    .mypage-tab-menu {
+        gap: 28px;
+        padding: 0 0 0 28px;
     }
 
     .mypage-tab {
         font-size: 18px;
+        padding: 10px 0;
     }
 
     .item-list {
-        display: flex;
-        gap: 30px;
-        padding-left: 30px;
-        padding-right: 30px;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        padding: 0 28px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px 36px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .mypage-container {
+        margin: 24px auto;
+        padding: 0 20px;
     }
 
-    .item-card {
-        width: 220px;
-        background: transparent;
-        border-radius: 0;
-        box-shadow: none;
+    .profile-area {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
     }
 
-    .item-image-placeholder {
-        width: 220px;
-        height: 220px;
-        border-radius: 8px;
+    .profile-icon {
+        margin-left: 0;
+        width: 120px;
+        height: 120px;
     }
 
-    .item-name {
+    .profile-username {
+        margin-left: 0;
+        font-size: 24px;
+    }
+
+    .rating-stars {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .profile-edit-btn {
+        margin-left: 0;
+    }
+
+    .mypage-tab-menu {
+        gap: 20px;
+        padding: 0 20px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        border-bottom: none;
+    }
+
+    .mypage-tab-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mypage-tab {
         font-size: 16px;
-        padding: 0;
+        white-space: nowrap;
+        padding: 10px 0;
+    }
+
+    .item-list {
+        padding: 0 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 28px;
     }
 }
 
 @media (max-width: 767px) {
     .mypage-container {
         margin: 20px auto;
-        padding: 0 15px;
+        padding: 0 12px;
     }
 
     .profile-area {
         flex-direction: column;
+        align-items: center;
         text-align: center;
-        background: transparent;
-        border-radius: 0;
-        padding: 0;
-        margin-bottom: 25px;
-        gap: 20px;
-        box-shadow: none;
+        gap: 12px;
+        margin-top: 12px;
     }
 
     .profile-icon {
+        margin-left: 0;
         width: 100px;
         height: 100px;
-        margin: 0 auto;
-        border: none;
-        box-shadow: none;
-    }
-
-    .profile-info {
-        text-align: center;
     }
 
     .profile-username {
-        font-size: 1.5rem;
+        font-size: 22px;
         margin-left: 0;
-        margin-bottom: 15px;
     }
 
     .profile-edit-btn {
+        font-size: .95rem;
+        padding: 8px 16px;
         margin-left: 0;
-        padding: 8px 20px;
-        font-size: 0.9rem;
-        box-shadow: none;
     }
 
     .mypage-tab-menu {
-        gap: 20px;
-        margin-left: 20px;
-        border-bottom: 1px solid #bbb;
+        gap: 16px;
+        padding: 0 12px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        border-bottom: none;
+    }
+
+    .mypage-tab-menu::-webkit-scrollbar {
+        display: none;
     }
 
     .mypage-tab {
-        font-size: 15px;
-        padding-bottom: 6px;
+        font-size: 16px;
+        white-space: nowrap;
+        padding: 10px 0;
     }
 
     .item-list {
-        display: flex;
-        gap: 20px;
-        margin-top: 25px;
-        padding-left: 20px;
-        padding-right: 20px;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    }
-
-    .item-card {
-        width: 150px;
-        background: transparent;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-    .item-image-placeholder {
-        width: 150px;
-        height: 150px;
-        font-size: 20px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-    }
-
-    .item-image-text {
-        font-size: 16px;
-    }
-
-    .item-name {
-        font-size: 13px;
-        padding: 0;
-        min-height: auto;
-        line-height: 1.3;
-    }
-
-    .sold-badge {
-        top: 8px;
-        left: 8px;
-        font-size: 12px;
-        padding: 3px 8px;
-        border-radius: 4px;
-    }
-
-    .no-items {
-        font-size: 14px;
-        margin: 40px 0;
-        padding: 20px;
-        background: transparent;
-        border-radius: 0;
-        box-shadow: none;
+        padding: 0 12px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px 18px;
     }
 }

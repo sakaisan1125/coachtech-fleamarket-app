@@ -1,5 +1,5 @@
 body {
-    background: #fff;
+    background: #ffffff;
 }
 
 .register-wrap {
@@ -116,12 +116,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: auto;
+    height: 80px;
 }
 
 
 .header__left img {
-    height: 30px;
+    height: 36px;
 }
 
 @media (min-width: 1400px) {
