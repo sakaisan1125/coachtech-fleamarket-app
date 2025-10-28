@@ -20,16 +20,17 @@
 .sidebar {
     width: 250px;
     background-color: #868686;
-    padding: 15px;
+    padding: 0 15px;
     border-right: 1px solid #ddd;
 }
 
 .sidebar h2 {
     font-size: 30px;
-    margin-bottom: 24px;
+    margin-bottom: 48px;
     color: #ffffff;
     text-align: center;
     height: 36px;
+    margin-top: 5px;
 }
 
 .transaction-list {
@@ -38,7 +39,7 @@
 }
 
 .transaction-list li {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .transaction-list a {
@@ -254,6 +255,7 @@ textarea {
     color: #7B7B7B;
     margin: 15px;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .send-message {
