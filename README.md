@@ -18,7 +18,27 @@
 2. `composer install`
 3. `.env.example` をコピーして `.env` を作成し、環境に合わせて編集  
    例：  
-   ...（省略）...
+   APP_NAME="COACHTECH"
+   APP_ENV=local
+   APP_KEY=（自動生成される）
+   APP_DEBUG=true
+   APP_URL=http://localhost
+
+   DB_CONNECTION=mysql
+   DB_HOST=mysql
+   DB_PORT=3306
+   DB_DATABASE=laravel_db
+   DB_USERNAME=laravel_user
+   DB_PASSWORD=laravel_pass
+
+   MAIL_MAILER=smtp
+   MAIL_HOST=mailhog
+   MAIL_PORT=1025
+   MAIL_FROM_ADDRESS=noreply@coachtech.com
+   MAIL_FROM_NAME="COACHTECH"
+
+   STRIPE_KEY=your_stripe_key_here
+   STRIPE_SECRET=your_stripe_secret_here
 
 4. アプリケーションキー生成  
    `php artisan key:generate`
