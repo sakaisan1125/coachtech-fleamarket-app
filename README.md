@@ -16,7 +16,11 @@
    ※このコマンドでコンテナに入ります。以降のコマンド（2〜6）はコンテナ内で実行してください。
 
 2. `composer install`
-3. `.env.example` をコピーして `.env` を作成し、環境に合わせて編集  
+3. `.env.example` をコピーして `.env` を作成し、環境に合わせて編集してください。 
+
+   ```bash
+   cp .env.example .env
+   
    例：  
    APP_NAME="COACHTECH"
    APP_ENV=local
@@ -39,6 +43,7 @@
 
    STRIPE_KEY=your_stripe_key_here
    STRIPE_SECRET=your_stripe_secret_here
+   ---
 
 4. アプリケーションキー生成  
    `php artisan key:generate`
