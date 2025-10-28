@@ -235,11 +235,6 @@
     line-height: 1.2;
 }
 
-.timestamp {
-    font-size: 0.8em;
-    color: #666;
-}
-
 .chat-form {
     display: flex;
     align-items: center;
