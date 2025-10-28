@@ -33,7 +33,7 @@
                     <button class="complete-transaction" id="complete-transaction-button">取引を完了する</button>
                     <div id="complete-transaction-modal-buyer" class="modal" style="display:none">
                         <div class="modal-content">
-                            <h2>取引を完了します。</h2>
+                            <h2>取引が完了しました。</h2>
                             <p>今回の取引相手はどうでしたか？</p>
                             <form action="{{ route('chat.completeTransaction', ['purchaseId' => $purchaseId]) }}" method="POST">
                                 @csrf
@@ -82,14 +82,14 @@
             @foreach ($messages as $message)
                 <div class="message {{ $message->sender_id === auth()->id() ? 'my-message' : 'other-message' }}">
                     <div class="message-content">
-                        <div class="message-header">
-                            @if ($message->sender->profile_image)
-                                <img src="{{ \Illuminate\Support\Facades\Storage::url($message->sender->profile_image) }}" alt="ユーザーアイコン" class="message-user-icon">
-                            @else
-                                <div class="message-user-icon message-default-icon"></div>
-                            @endif
-                            <p class="message-user-name">{{ $message->sender->name }}</p>
-                        </div>
+                        <div class="message-header {{ $message->sender_id === auth()->id() ? 'message-header-right' : '' }}">
+                        @if ($message->sender->profile_image)
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($message->sender->profile_image) }}" alt="ユーザーアイコン" class="message-user-icon">
+                        @else
+                            <div class="message-user-icon message-default-icon"></div>
+                        @endif
+                        <p class="message-user-name">{{ $message->sender->name }}</p>
+                    </div>
                         <div class="message-body">
                             @if (session('chat.edit_message_id') == $message->id)
                                 <form action="{{ route('chat.update', ['purchaseId' => $purchaseId, 'messageId' => $message->id]) }}" method="POST">

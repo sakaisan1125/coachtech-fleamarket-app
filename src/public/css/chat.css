@@ -145,6 +145,27 @@
 .my-message {
     margin-left: auto;
     border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.my-message .message-content {
+    flex: 0 1 auto;
+    width: fit-content;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.my-message .message-actions {
+    align-self: flex-end;
+}
+
+.my-message .message-user-name {
+    text-align: right;
+    word-break: break-word;
 }
 
 .other-message {
@@ -165,6 +186,15 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.message-header-right {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
 .message-user-icon {
@@ -190,6 +220,18 @@
 
 .message-content {
     flex: 1;
+}
+
+.my-message .message-body,
+.other-message .message-body {
+    display: inline-block;
+    padding: 10px 14px;
+    margin-top: 10px;
+    width: fit-content;
+    min-width: 460px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
 }
 
 .timestamp {
@@ -372,15 +414,16 @@ textarea {
 
 .modal-content h2 {
     font-size: 35px;
-    margin-bottom: 2px;
-    padding: 10px 15px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    padding: 0px 0px 20px 15px;
     border-bottom: 1px solid #000000;
     width: 100%;
 }
 
 .modal-content p {
     font-size: 20px;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     color: #868686;
     padding-left: 15px;
     width: 100%;
@@ -398,7 +441,7 @@ textarea {
     background-color: #FF8282;
     color: #ffffff;
     border: none;
-    padding: 4px 20px;
+    padding: 4px 15px;
     border-radius: 5px;
     font-size: 24px;
     cursor: pointer;
@@ -428,7 +471,7 @@ textarea {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .rating-stars input[type="radio"]:checked~label {

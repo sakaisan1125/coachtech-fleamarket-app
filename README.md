@@ -12,51 +12,43 @@
 
 ### Laravel 環境構築
 
-1. `docker-compose exec php bash`
+1. `docker-compose exec php bash`  
+   ※このコマンドでコンテナに入ります。以降のコマンド（2〜6）はコンテナ内で実行してください。
+
 2. `composer install`
 3. `.env.example` をコピーして `.env` を作成し、環境に合わせて編集  
-   例：
+   例：  
+   ...（省略）...
 
-   ```env
-   DB_HOST=mysql
-   DB_PORT=3306
-   DB_DATABASE=laravel_db
-   DB_USERNAME=laravel_user
-   DB_PASSWORD=laravel_pass
+4. アプリケーションキー生成  
+   `php artisan key:generate`
 
-   MAIL_HOST=mailhog
-   MAIL_PORT=1025
-   MAIL_FROM_ADDRESS=noreply@coachtech.com
-   MAIL_FROM_NAME="COACHTECH"
-   APP_URL=http://localhost
+5. マイグレーション＆シーディング  
+   `php artisan migrate --seed`
 
-   STRIPE_KEY=your_stripe_key_here
-   STRIPE_SECRET=your_stripe_secret_here
-   ```
+6. 画像アップロード用ストレージリンク作成  
+   `php artisan storage:link`
 
-   ※STRIPE_KEY と STRIPE_SECRET は Stripe のダッシュボードから取得してください。
-
-4. アプリケーションキー生成
+7. フロントエンドのセットアップ（Laravel Mix 使用）  
+   ※**ここからはコンテナ外（ホスト側）で実行してください。**  
+   いったん `exit` でコンテナから出て、下記コマンドを実行します。
 
    ```bash
-   php artisan key:generate
-   ```
-
-5. マイグレーション＆シーディング
-   ```bash
-   php artisan migrate --seed
-   ```
-6. 画像アップロード用ストレージリンク作成
-   ```bash
-   php artisan storage:link
-   ```
-7. フロントエンドのセットアップ（Laravel Mix 使用）
    npm install
    npm run dev
    # ※本番ビルドを行う場合は以下を使用
    npm run prod
+   ```
 
----
+   #### 補足：WSL / Linux環境でビルドエラーが出る場合
+
+   npm 実行時に `Error: not found: make` のようなエラーが出る場合は、  
+   **コンテナ内ではなく、WSLやLinuxホスト側のターミナルで** 以下のコマンドを実行してください。
+
+   ```bash
+   sudo apt update
+   sudo apt install -y build-essential
+   ```
 
 ## 使用技術
 
